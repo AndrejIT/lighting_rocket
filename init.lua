@@ -63,7 +63,8 @@ lighting_rocket.add_light = function(pos)
         }
 
         if minetest.get_node(area_pos).name == "air" then
-            minetest.set_node(area_pos, {name="lighting_rocket:light_air"})
+            minetest.swap_node(area_pos, {name="lighting_rocket:light_air"})
+            minetest.get_node_timer(area_pos):start(lighting_rocket.light_time)
         end
     end
 
@@ -78,7 +79,8 @@ lighting_rocket.add_light = function(pos)
             }
 
             if minetest.get_node(area_pos).name == "air" then
-                minetest.set_node(area_pos, {name="lighting_rocket:light_air"})
+                minetest.swap_node(area_pos, {name="lighting_rocket:light_air"})
+                minetest.get_node_timer(area_pos):start(lighting_rocket.light_time)
             end
         end
     end
@@ -119,7 +121,7 @@ minetest.register_node("lighting_rocket:light_air", {
     groups = {not_in_creative_inventory = 1},
 
     on_timer = function(pos, elapsed)
-        minetest.set_node(pos, {name="air"})
+        minetest.swap_node(pos, {name="air"})
         return false    -- prevent futher execution?
     end,
     on_construct = function(pos)
