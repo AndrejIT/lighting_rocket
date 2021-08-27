@@ -9,4 +9,4 @@ By default light persists for 2 minutes.
 Depends on default mod tnt for gunpowder and sound.
 
 This mod code is licensed under the GNU LGPLv2.
-
+Madia - CC BY-SA 3.0.
